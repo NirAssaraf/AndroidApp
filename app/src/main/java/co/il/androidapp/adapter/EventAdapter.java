@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import co.il.androidapp.R;
 import co.il.androidapp.model.Event;
 
 public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
@@ -31,7 +32,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
     @NonNull
     @Override
     public EventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.list_row,parent,false);
+        View view = inflater.inflate(R.layout.event_row,parent,false);
         EventViewHolder holder = new EventViewHolder(view);
         holder.listener = listener;
         return holder;
@@ -49,4 +50,4 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
         return eventList.size();
     }
 }
-}
+
