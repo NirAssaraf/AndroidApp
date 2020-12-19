@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import co.il.androidapp.R;
 import co.il.androidapp.model.Event;
 
 public class EventViewHolder extends RecyclerView.ViewHolder {
@@ -22,9 +23,9 @@ public class EventViewHolder extends RecyclerView.ViewHolder {
 
     public EventViewHolder(@NonNull View itemView) {
         super(itemView);
-        EventName = itemView.findViewById(R.id.eventNameView);
+        EventName = itemView.findViewById(R.id.eventViewName);
 //        EventImage = itemView.findViewById(R.id.eventImageView);
-        EventDetails=itemView.findViewById(R.id.eventDetailsView);
+        EventDetails=itemView.findViewById(R.id.eventViewDetails);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
