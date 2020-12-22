@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+//change the name of the page in the top of the app
         navController = Navigation.findNavController(this, R.id.mainActivityNavHost);
         NavigationUI.setupActionBarWithNavController(this,navController);
 
