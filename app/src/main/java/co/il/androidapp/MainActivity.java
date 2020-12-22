@@ -1,26 +1,35 @@
 package co.il.androidapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Object LoginFragment;
-
+    NavController navController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//change the name of the page in the top of the app
+        navController = Navigation.findNavController(this, R.id.mainActivityNavHost);
+        NavigationUI.setupActionBarWithNavController(this,navController);
+
+
     }
 
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId()==android.R.id.home){
+            navController.navigateUp();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
-

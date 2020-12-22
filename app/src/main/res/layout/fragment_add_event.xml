@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddEventFragment">
+
+    <Button
+        android:id="@+id/CancelEventBtn"
+        android:layout_width="144dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="36dp"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toEndOf="@+id/SaveEventBtn"
+        app:layout_constraintTop_toBottomOf="@+id/addEventListParticipants"
+        app:layout_constraintVertical_bias="0.485" />
+
+    <Button
+        android:id="@+id/SaveEventBtn"
+        android:layout_width="146dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="36dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addEventListParticipants"
+        app:layout_constraintVertical_bias="0.478" />
+
+    <TextView
+        android:id="@+id/addEventListParticipants"
+        android:layout_width="337dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="44dp"
+        android:text="List of Participants"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addEventChores" />
+
+    <TextView
+        android:id="@+id/addEventChores"
+        android:layout_width="338dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="44dp"
+        android:hint="Chores List"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addEventListProducts" />
+
+    <EditText
+        android:id="@+id/addEventListProducts"
+        android:layout_width="340dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="44dp"
+        android:hint="List of Products to bring"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addEventDate" />
+
+    <EditText
+        android:id="@+id/addEventDate"
+        android:layout_width="341dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="44dp"
+        android:hint="Pick a Date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addEventDescription" />
+
+    <EditText
+        android:id="@+id/addEventDescription"
+        android:layout_width="338dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="44dp"
+        android:hint="Description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addEventImg" />
+
+    <ImageView
+        android:id="@+id/addEventImg"
+        android:layout_width="370dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="44dp"
+        android:src="@android:drawable/ic_dialog_alert"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AddEventName" />
+
+    <EditText
+        android:id="@+id/AddEventName"
+        android:layout_width="335dp"
+        android:hint="Event Name"
+        android:layout_height="38dp"
+        android:layout_marginTop="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
