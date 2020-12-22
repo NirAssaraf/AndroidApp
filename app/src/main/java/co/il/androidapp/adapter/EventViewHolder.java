@@ -25,7 +25,7 @@ public class EventViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         EventName = itemView.findViewById(R.id.eventViewName);
 //        EventImage = itemView.findViewById(R.id.eventImageView);
-        EventDetails=itemView.findViewById(R.id.eventViewDetails);
+
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +37,7 @@ public class EventViewHolder extends RecyclerView.ViewHolder {
 
     public void bindData(Event event, int position) {
         EventName.setText(event.EventName);
-        EventDetails.setText(event.EventDetails);
+        //EventDetails.setText(event.EventDetails);
         this.position = position;
     }
 }
