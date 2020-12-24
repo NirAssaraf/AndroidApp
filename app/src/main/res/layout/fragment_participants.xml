@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ParticipantsFragment">
+
+
+    <CheckBox
+        android:id="@+id/uncoming_CheckBox"
+        android:layout_width="127dp"
+        android:layout_height="36dp"
+        android:text="Uncoming"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/maybeComing_CheckBox" />
+
+    <CheckBox
+        android:id="@+id/maybeComing_CheckBox"
+        android:layout_width="127dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="16dp"
+        android:text="Maybe"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/coming_CheckBox" />
+
+    <CheckBox
+        android:id="@+id/coming_CheckBox"
+        android:layout_width="127dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="76dp"
+        android:text="Coming"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="251dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="112dp"
+        android:text="Full Name"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
