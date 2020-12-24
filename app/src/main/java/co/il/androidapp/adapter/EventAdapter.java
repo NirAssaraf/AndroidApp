@@ -7,13 +7,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import java.util.List;
 
 import co.il.androidapp.R;
+import co.il.androidapp.adapter.EventViewHolder;
 import co.il.androidapp.model.Event;
 
-public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
-    public List<Event> eventList;
+public class EventAdapter extends RecyclerView.Adapter<EventViewHolder>{
+    public List<Event> data;
     LayoutInflater inflater;
 
     public EventAdapter(LayoutInflater inflater){
@@ -36,18 +38,16 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
         EventViewHolder holder = new EventViewHolder(view);
         holder.listener = listener;
         return holder;
-
     }
 
     @Override
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
-        Event event = eventList.get(position);
+        Event event = data.get(position);
         holder.bindData(event,position);
     }
 
     @Override
     public int getItemCount() {
-        return eventList.size();
+        return data.size();
     }
 }
-

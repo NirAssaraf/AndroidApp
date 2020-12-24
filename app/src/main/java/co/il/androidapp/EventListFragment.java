@@ -1,5 +1,4 @@
 package co.il.androidapp;
-
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,11 +6,11 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -21,47 +20,45 @@ import co.il.androidapp.adapter.EventAdapter;
 import co.il.androidapp.model.Event;
 import co.il.androidapp.model.ModelDemo;
 
-
 public class EventListFragment extends Fragment {
-
-    FloatingActionButton addEventBtn;
 
     public EventListFragment() {
         // Required empty public constructor
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =inflater.inflate(R.layout.fragment_event_list, container, false);
-        RecyclerView rv =view.findViewById(R.id.eventListFrag);
+        View view =  inflater.inflate(R.layout.fragment_event_list, container, false);
+        RecyclerView rv = view.findViewById(R.id.eventListFrag);
 
         rv.hasFixedSize();
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         rv.setLayoutManager(layoutManager);
 
-        List<Event> eventList = ModelDemo.instance.getAllEvents();
+        List<Event> data = ModelDemo.instance.getAllEvents();
 
-        EventAdapter eventAdapter =new EventAdapter(getLayoutInflater());
-        eventAdapter.eventList=eventList;
-        rv.setAdapter(eventAdapter);
+        EventAdapter adapter = new EventAdapter(getLayoutInflater());
+        adapter.data = data;
+        rv.setAdapter(adapter);
 
-        View view1 =inflater.inflate(R.layout.fragment_event_list, container, false);
-
-// Need To figure it Out (the FloatingActionButton)
-        addEventBtn=(FloatingActionButton) view1.findViewById(R.id.addEventBtn);
-        addEventBtn.setOnClickListener(new View.OnClickListener() {
+        adapter.setOnClickListener(new EventAdapter.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view1).navigate(R.id.actionEventListFrag_To_addEventFrag);
-                //Toast.makeText(getContext(),"Clicked",Toast.LENGTH_SHORT).show();
+            public void onItemClick(int position) {
+                Navigation.findNavController(view).navigate(R.id.action_eventListFragment_to_eventDetailsFragment);
             }
         });
 
+        FloatingActionButton Fab=  view.findViewById(R.id.addEventBtn);
+        Fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.actionEventListFrag_To_addEventFrag);
+            }
+        });
         return view;
     }
+
 }

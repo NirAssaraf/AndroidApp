@@ -27,38 +27,9 @@
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addEventListParticipants"
         app:layout_constraintVertical_bias="0.478" />
 
-    <TextView
-        android:id="@+id/addEventListParticipants"
-        android:layout_width="337dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="44dp"
-        android:text="List of Participants"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addEventChores" />
 
-    <TextView
-        android:id="@+id/addEventChores"
-        android:layout_width="338dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="44dp"
-        android:hint="Chores List"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addEventListProducts" />
-
-    <EditText
-        android:id="@+id/addEventListProducts"
-        android:layout_width="340dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="44dp"
-        android:hint="List of Products to bring"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addEventDate" />
 
     <EditText
         android:id="@+id/addEventDate"
@@ -69,7 +40,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addEventDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/addEventDescription"
+        android:inputType="" />
 
     <EditText
         android:id="@+id/addEventDescription"
@@ -98,6 +70,7 @@
         android:hint="Event Name"
         android:layout_height="38dp"
         android:layout_marginTop="72dp"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
