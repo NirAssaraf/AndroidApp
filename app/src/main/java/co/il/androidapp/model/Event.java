@@ -2,10 +2,11 @@ package co.il.androidapp.model;
 
 import android.location.Location;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Event {
+public class Event implements Serializable {
     public String Eventid;
     public String EventName;
     public String EventDetails;
@@ -17,5 +18,6 @@ public class Event {
 //    public List<Product> products;
 //    public List<Chore> chorelist;
 //    public List<User>userlist;
+    public int position;
 
 }

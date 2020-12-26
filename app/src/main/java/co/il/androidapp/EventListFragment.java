@@ -1,6 +1,8 @@
 package co.il.androidapp;
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,6 +24,10 @@ import co.il.androidapp.model.ModelDemo;
 
 public class EventListFragment extends Fragment {
 
+    private eventInterface callback;
+    public interface eventInterface{
+        void onItemClickEvent(Event event);
+    }
     public EventListFragment() {
         // Required empty public constructor
     }
@@ -47,7 +53,7 @@ public class EventListFragment extends Fragment {
         adapter.setOnClickListener(new EventAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Navigation.findNavController(view).navigate(R.id.action_eventListFragment_to_eventDetailsFragment);
+                callback.onItemClickEvent(data.get(position));
             }
         });
 
@@ -61,4 +67,9 @@ public class EventListFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        callback=(eventInterface) context;
+    }
 }

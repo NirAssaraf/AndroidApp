@@ -35,8 +35,8 @@
             android:id="@+id/actionEventListFrag_To_addEventFrag"
             app:destination="@id/addEventFragment" />
         <action
-            android:id="@+id/action_eventListFragment_to_eventDetailsFragment"
-            app:destination="@id/eventDetailsFragment" />
+            android:id="@+id/action_eventListFragment_to_eventDetailsFragment4"
+            app:destination="@id/eventDetailsFragment4" />
     </fragment>
     <fragment
         android:id="@+id/addEventFragment"
@@ -44,8 +44,7 @@
         android:label="fragment_add_event"
         tools:layout="@layout/fragment_add_event" />
     <fragment
-        android:id="@+id/eventDetailsFragment"
+        android:id="@+id/eventDetailsFragment4"
         android:name="co.il.androidapp.EventDetailsFragment"
-        android:label="event_details_fragment"
-        tools:layout="@layout/event_details_fragment" />
+        android:label="EventDetailsFragment" />
 </navigation>

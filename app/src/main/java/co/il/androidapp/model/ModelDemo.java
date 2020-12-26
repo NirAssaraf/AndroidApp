@@ -12,6 +12,7 @@ public class ModelDemo {
             Event event = new Event();
             event.Eventid = "" + i;
             event.EventName = "Event " + i;
+            event.position=i;
             data.add(event);
         }
     }

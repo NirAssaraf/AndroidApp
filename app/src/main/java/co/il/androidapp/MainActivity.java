@@ -1,36 +1,37 @@
 package co.il.androidapp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import java.io.Serializable;
+
+import co.il.androidapp.model.Event;
+
+
+public class MainActivity extends AppCompatActivity implements EventListFragment.eventInterface {
 
     NavController navController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
-//change the name of the page in the top of the app
         navController = Navigation.findNavController(this, R.id.mainActivityNavHost);
         NavigationUI.setupActionBarWithNavController(this,navController);
-
-
     }
 
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId()==android.R.id.home){
-            navController.navigateUp();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+    public void onItemClickEvent(Event event) {
+        Intent intent = new Intent(getBaseContext(), EventMainActivity.class);
+        intent.putExtra("TheEvent",  event);
+        startActivity(intent);
     }
 }
