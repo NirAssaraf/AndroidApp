@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/menu_product"
+        android:icon="@drawable/product"
+        app:showAsAction="always"
+        android:title="Products"
+        android:orderInCategory="100"/>
+    <item
+        android:id="@+id/menu_users"
+        android:icon="@drawable/users"
+        app:showAsAction="always"
+        android:title="Users"
+        android:orderInCategory="100"/>
+    <item
+        android:id="@+id/menu_chores"
+        android:icon="@drawable/chores"
+        app:showAsAction="always"
+        android:title="Products"
+        android:orderInCategory="100"/>
+    <item
+        android:id="@+id/menu_main"
+        android:icon="@drawable/home"
+        app:showAsAction="always"
+        android:title="Products"
+        android:orderInCategory="100"/>
+
+</menu>
