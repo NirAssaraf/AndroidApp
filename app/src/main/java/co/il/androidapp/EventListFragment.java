@@ -72,4 +72,10 @@ public class EventListFragment extends Fragment {
         super.onAttach(context);
         callback=(eventInterface) context;
     }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        callback=null;
+    }
 }
