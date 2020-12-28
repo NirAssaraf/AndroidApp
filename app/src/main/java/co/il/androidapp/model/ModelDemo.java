@@ -10,7 +10,7 @@ public class ModelDemo {
     private ModelDemo(){
         for(int i=0;i<10;i++) {
             Event event = new Event();
-            event.Eventid = "" + i;
+            event.Eventid = 1+ i;
             event.EventName = "Event " + i;
             event.position=i;
             data.add(event);

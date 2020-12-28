@@ -4,13 +4,17 @@ package co.il.androidapp;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.annotation.SuppressLint;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.EventLog;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.luseen.spacenavigation.SpaceItem;
@@ -22,6 +26,7 @@ import co.il.androidapp.EventDetailsFragment;
 import co.il.androidapp.ParticipantsFragment;
 import co.il.androidapp.R;
 import co.il.androidapp.ShoppingListFragment;
+import co.il.androidapp.dialog.DialogEventMainAc;
 import co.il.androidapp.model.Event;
 
 
@@ -71,19 +76,22 @@ public class EventMainActivity extends AppCompatActivity {
             public void onCentreButtonClick() {
                 switch (fragmentIndex) {
                     case 0: {
-                        setFragment(fra2);
+                        //setFragment(fra2);
                         return;
                     }
                     case 1: {
-                        setFragment(fra3);
+                       //setFragment(fra3);
                         return;
                     }
                     case 2: {
-                        setFragment(fra4);
+                       // setFragment(fra4);
+                        showEditDialog(1);
                         return;
                     }
                     case 3: {
-                        setFragment(fra1);
+                        //setFragment(fra1);
+                        showEditDialog(2);
+
                         return;
                     }
                     default:
@@ -151,10 +159,25 @@ public class EventMainActivity extends AppCompatActivity {
                         fragmentIndex=0;
                     }
 
-                }            }
+                }
+            }
         });
 
+
     }
+
+private void showEditDialog(int flag){
+
+    FragmentManager fm =getSupportFragmentManager();
+    DialogEventMainAc dialogEventMainAc = DialogEventMainAc.newInstance(flag);
+    if (flag==1)
+        dialogEventMainAc.show(fm,"pop_fragment_chore");
+    else
+        dialogEventMainAc.show(fm,"pop_fragment_product");
+
+
+}
+
 
     private void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction= getSupportFragmentManager().beginTransaction();
