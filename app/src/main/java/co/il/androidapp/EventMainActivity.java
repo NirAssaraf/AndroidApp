@@ -27,10 +27,12 @@ import co.il.androidapp.ParticipantsFragment;
 import co.il.androidapp.R;
 import co.il.androidapp.ShoppingListFragment;
 import co.il.androidapp.dialog.DialogEventMainAc;
+import co.il.androidapp.model.Chore;
+import co.il.androidapp.model.ChoreModel;
 import co.il.androidapp.model.Event;
 
 
-public class EventMainActivity extends AppCompatActivity {
+public class EventMainActivity extends AppCompatActivity implements DialogEventMainAc.onSaveInterface{
 
     private EventDetailsFragment fra1;
     private ShoppingListFragment fra2;
@@ -38,10 +40,14 @@ public class EventMainActivity extends AppCompatActivity {
     private ParticipantsFragment fra4;
     int fragmentIndex;
     Event event;
+
+
     NavController navController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         try
         {
             this.getSupportActionBar().hide();
@@ -169,7 +175,7 @@ public class EventMainActivity extends AppCompatActivity {
 private void showEditDialog(int flag){
 
     FragmentManager fm =getSupportFragmentManager();
-    DialogEventMainAc dialogEventMainAc = DialogEventMainAc.newInstance(flag);
+    DialogEventMainAc dialogEventMainAc = DialogEventMainAc.newInstance(flag,this);
     if (flag==1)
         dialogEventMainAc.show(fm,"pop_fragment_chore");
     else
@@ -183,6 +189,25 @@ private void showEditDialog(int flag){
         FragmentTransaction fragmentTransaction= getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frameLayout1,fragment);
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onSave(String tag, String name, String details) {
+        switch(tag) {
+
+            case "Chore":
+                ChoreModel.instance.addChore(new Chore(name, details));
+                return;
+        }
+
+    }
+
+    public void updateDataChoreFragment(ChoresFragment fragment)
+    {
+        if (fragment!=null){
+            fragment.updateData();
+        }
+
     }
 
 }

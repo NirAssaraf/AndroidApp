@@ -1,64 +1,62 @@
 package co.il.androidapp;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ChoresFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.List;
+import java.util.zip.CheckedInputStream;
+
+import co.il.androidapp.adapter.ChoreAdapter;
+import co.il.androidapp.adapter.EventAdapter;
+import co.il.androidapp.model.ChoreModel;
+import co.il.androidapp.model.Event;
+import co.il.androidapp.model.ModelDemo;
+
+
 public class ChoresFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    RecyclerView rv;
+    ChoreAdapter adapter;
     public ChoresFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ChoresFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ChoresFragment newInstance(String param1, String param2) {
-        ChoresFragment fragment = new ChoresFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View view =  inflater.inflate(R.layout.fragment_chores, container, false);
+         rv = view.findViewById(R.id.chore_RecyclerView);
+
+        rv.hasFixedSize();
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        rv.setLayoutManager(layoutManager);
+
+        //List<Event> data = ModelDemo.instance.getAllEvents();
+
+        adapter = new ChoreAdapter(getActivity(), ChoreModel.instance.getAllChoreList());
+        //adapter.data = data;
+        rv.setAdapter(adapter);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chores, container, false);
+        return view;
+    }
+
+    public void updateData() {
+
+        adapter.notifyDataSetChanged();
+
     }
 }
+

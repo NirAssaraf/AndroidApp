@@ -36,7 +36,7 @@
 
 
         <Button
-            android:id="@+id/SaveNewProduct"
+            android:id="@+id/SaveNewChore"
             android:layout_width="0dp"
             android:layout_height="55dp"
             android:text="Save"
@@ -46,7 +46,7 @@
 
 
         <Button
-            android:id="@+id/CancelAddNewProduct"
+            android:id="@+id/CancelNewChore"
             android:layout_width="0dp"
             android:layout_height="55dp"
             android:text="cancel"

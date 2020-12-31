@@ -3,51 +3,80 @@ package co.il.androidapp.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import java.util.List;
 
 import co.il.androidapp.R;
-import co.il.androidapp.adapter.EventViewHolder;
 import co.il.androidapp.model.Event;
 
-public class EventAdapter extends RecyclerView.Adapter<EventViewHolder>{
+public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> {
     public List<Event> data;
-    LayoutInflater inflater;
+    private OnItemClickListener listener;
 
-    public EventAdapter(LayoutInflater inflater){
-        this.inflater = inflater;
+    public EventAdapter() {
+
     }
+
     public interface OnItemClickListener{
         void onItemClick(int position);
     }
 
-    private OnItemClickListener listener;
-
-    public void setOnClickListener(OnItemClickListener listener){
-        this.listener = listener;
-    }
-
     @NonNull
     @Override
-    public EventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.event_row,parent,false);
-        EventViewHolder holder = new EventViewHolder(view);
-        holder.listener = listener;
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_row,parent,false);
+        ViewHolder holder = new ViewHolder(view);
+        holder.listener =  listener;
         return holder;
     }
 
+    public void setOnClickListener(EventAdapter.OnItemClickListener listener){
+        this.listener = listener;
+    }
+
+
     @Override
-    public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Event event = data.get(position);
         holder.bindData(event,position);
     }
 
     @Override
     public int getItemCount() {
+
+        if (data==null){
+            return 0;
+        }
+
         return data.size();
+    }
+
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        public EventAdapter.OnItemClickListener listener;
+        TextView EventName;
+        int position;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            EventName = itemView.findViewById(R.id.eventViewName);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onItemClick(position);
+                }
+            });
+        }
+
+        public void bindData(Event event, int position) {
+            this.EventName.setText(event.EventName);
+            this.position = position;
+        }
+
     }
 }

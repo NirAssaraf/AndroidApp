@@ -8,11 +8,9 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -46,7 +44,7 @@ public class EventListFragment extends Fragment {
 
         List<Event> data = ModelDemo.instance.getAllEvents();
 
-        EventAdapter adapter = new EventAdapter(getLayoutInflater());
+        EventAdapter adapter = new EventAdapter();
         adapter.data = data;
         rv.setAdapter(adapter);
 
