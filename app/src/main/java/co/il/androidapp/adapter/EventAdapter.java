@@ -3,6 +3,7 @@ package co.il.androidapp.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -59,12 +60,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public EventAdapter.OnItemClickListener listener;
         TextView EventName;
+        LinearLayout backgroundImage;
         int position;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             EventName = itemView.findViewById(R.id.eventViewName);
-
+            backgroundImage = itemView.findViewById(R.id.linear_background);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -74,8 +76,25 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         }
 
         public void bindData(Event event, int position) {
-            this.EventName.setText(event.EventName);
+            this.EventName.setText(event.getEventName());
             this.position = position;
+            this.backgroundImage.setBackgroundResource(getImageBackground(event.getPosition()));
+        }
+
+        private int getImageBackground(int position) {
+            switch (position){
+                case 1:
+                    return R.drawable.birthday;
+                case 2:
+                    return R.drawable.house_party;
+                case 3:
+                    return R.drawable.sit_in_the_house;
+                case 4:
+                    return R.drawable.party;
+                default:
+                    return R.color.default_active_item_color;
+
+            }
         }
 
     }

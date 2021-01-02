@@ -10,9 +10,9 @@ public class ModelDemo {
     private ModelDemo(){
         for(int i=0;i<10;i++) {
             Event event = new Event();
-            event.EventId = 1+ i;
-            event.EventName = "Event " + i;
-            event.position=i;
+            event.setEventId(1+ i);
+            event.setEventName("Event " + i);
+            event.setPosition(i);
             data.add(event);
         }
     }
@@ -20,6 +20,10 @@ public class ModelDemo {
 
     public List<Event> getAllEvents() {
         return data;
+    }
+
+    public void addEvent(Event event){
+        data.add(event);
     }
 
 }
