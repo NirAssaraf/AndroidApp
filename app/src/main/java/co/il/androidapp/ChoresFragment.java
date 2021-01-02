@@ -27,6 +27,7 @@ public class ChoresFragment extends Fragment {
     ChoreAdapter adapter;
     public ChoresFragment() {
         // Required empty public constructor
+        int i;
     }
 
 
