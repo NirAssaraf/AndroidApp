@@ -37,12 +37,22 @@
         <action
             android:id="@+id/action_eventListFragment_to_eventDetailsFragment4"
             app:destination="@id/eventDetailsFragment4" />
+        <argument
+            android:name="event"
+            app:argType="co.il.androidapp.model.Event" />
     </fragment>
     <fragment
         android:id="@+id/addEventFragment"
         android:name="co.il.androidapp.AddEventFragment"
         android:label="fragment_add_event"
-        tools:layout="@layout/fragment_add_event" />
+        tools:layout="@layout/fragment_add_event" >
+        <action
+            android:id="@+id/cancel_action_addEventFragment_to_eventListFragment2"
+            app:destination="@id/eventListFragment" />
+        <action
+            android:id="@+id/save_action_addEventFragment_to_eventListFragment6"
+            app:destination="@id/eventListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/eventDetailsFragment4"
         android:name="co.il.androidapp.EventDetailsFragment"

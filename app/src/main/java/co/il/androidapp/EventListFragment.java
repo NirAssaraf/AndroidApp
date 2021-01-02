@@ -3,14 +3,17 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -23,6 +26,9 @@ import co.il.androidapp.model.ModelDemo;
 public class EventListFragment extends Fragment {
 
     private eventInterface callback;
+    private RecyclerView rv;
+    private EventAdapter adapter;
+
     public interface eventInterface{
         void onItemClickEvent(Event event);
     }
@@ -35,8 +41,18 @@ public class EventListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_event_list, container, false);
-        RecyclerView rv = view.findViewById(R.id.eventListFrag);
+        try {
+            if(getArguments()!= null){
+                //try to get data from addEventFragment
+                EventListFragmentArgs args = EventListFragmentArgs.fromBundle(getArguments());
+                //add the event into the model
+                ModelDemo.instance.addEvent(args.getEvent());
+                //refresh the adapter
+                adapter.notifyDataSetChanged();
+            }
+        }catch (Exception e){}
 
+        rv = view.findViewById(R.id.eventListFrag);
         rv.hasFixedSize();
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -44,7 +60,7 @@ public class EventListFragment extends Fragment {
 
         List<Event> data = ModelDemo.instance.getAllEvents();
 
-        EventAdapter adapter = new EventAdapter();
+        adapter = new EventAdapter();
         adapter.data = data;
         rv.setAdapter(adapter);
 
@@ -63,6 +79,14 @@ public class EventListFragment extends Fragment {
             }
         });
         return view;
+    }
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
     }
 
     @Override

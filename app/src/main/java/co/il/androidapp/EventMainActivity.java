@@ -56,7 +56,7 @@ public class EventMainActivity extends AppCompatActivity implements DialogEventM
         catch (NullPointerException ignored){}
 
         event = (Event) getIntent().getSerializableExtra("TheEvent");
-        Toast.makeText(this, event.position+"", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, event.getPosition()+"", Toast.LENGTH_LONG).show();
 
 
         setContentView(R.layout.evant_main_activitiy);
