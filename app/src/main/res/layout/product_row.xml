@@ -6,59 +6,51 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_marginTop="16dp"
+
         >
 
-        <TextView
-            android:id="@+id/userParticipant"
+    <TextView
+        android:id="@+id/Product_Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Product Name"
+        android:textColor="@color/purple_700"
+        android:textSize="25dp"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"
+        >
+
+    <TextView
+        android:id="@+id/product_quantity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="8"
+        android:layout_marginTop="10dp"
+        android:text="Quantity"
+        android:textSize="22dp"
+
+        />
+
+        <CheckBox
+            android:id="@+id/product_bring"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="8"
-            android:layout_marginTop="37dp"
-            android:text="Participant"
-            android:textSize="22dp"
+            android:layout_weight="1"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+
 
             />
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-
-            >
-
-            <CheckBox
-                android:id="@+id/userComing"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:gravity="center"
-                android:text="Coming"
-                />
-
-            <CheckBox
-                android:id="@+id/userMaybeComing"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:gravity="center"
-                android:text="Maybe"
-
-                />
-
-            <CheckBox
-                android:id="@+id/userNotComing"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:gravity="center"
-                android:text="Uncoming  "
-
-                />
-
-
-
-        </LinearLayout>
-
-
-            </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

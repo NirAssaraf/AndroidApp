@@ -6,9 +6,13 @@ public class Participant {
 
 
     public int participantId;
+    public int position;
     public List<User> comingUserList;
     public List<User> notComingUserList;
     public List<User> maybeComingUserList;
+
+    public Participant() {
+    }
 
     public int getParticipantId() {
         return participantId;

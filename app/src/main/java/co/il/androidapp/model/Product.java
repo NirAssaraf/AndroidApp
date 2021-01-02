@@ -4,8 +4,25 @@ public class Product {
 
     public int productId;
     public String productName;
-    public int productQuantity;
-    public double productPrice;
+    public String productQuantity;
+    public int position;
+
+    public Product() {
+
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public Product(String productName, String productQuantity) {
+        this.productName = productName;
+        this.productQuantity = productQuantity;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
 
     public int getProductId() {
         return productId;
@@ -23,19 +40,12 @@ public class Product {
         this.productName = productName;
     }
 
-    public int getProductQuantity() {
+    public String getProductQuantity() {
         return productQuantity;
     }
 
-    public void setProductQuantity(int productQuantity) {
+    public void setProductQuantity(String productQuantity) {
         this.productQuantity = productQuantity;
     }
 
-    public double getProductPrice() {
-        return productPrice;
-    }
-
-    public void setProductPrice(double productPrice) {
-        this.productPrice = productPrice;
-    }
 }

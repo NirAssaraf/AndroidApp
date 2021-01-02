@@ -10,38 +10,36 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import co.il.androidapp.adapter.ParticipantAdapter;
-import co.il.androidapp.model.ParticipantModel;
+import co.il.androidapp.adapter.ChoreAdapter;
+import co.il.androidapp.adapter.ProductAdapter;
+import co.il.androidapp.model.ProductModel;
 
 
-public class ParticipantsFragment extends Fragment {
+public class ProductFragment extends Fragment {
+
 
     RecyclerView rv;
-    ParticipantAdapter adapter;
-
-    public ParticipantsFragment() {
-        // Required empty public constructor
-    }
+    ProductAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_participants, container, false);
-        rv = view.findViewById(R.id.participant_RecyclerView);
+
+        View view =inflater.inflate(R.layout.fragment_product, container, false);
+        rv=view.findViewById(R.id.product_RecyclerView);
         rv.hasFixedSize();
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         rv.setLayoutManager(layoutManager);
 
-        adapter = new ParticipantAdapter(getActivity(), ParticipantModel.instance.getAllParticipantList());
+        adapter = new ProductAdapter(getActivity(), ProductModel.instance.getAllProductList());
         rv.setAdapter(adapter);
 
         return view;
     }
 
-
     public void updateData(){
+
         adapter.notifyDataSetChanged();
     }
 }

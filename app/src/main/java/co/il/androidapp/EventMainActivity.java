@@ -25,17 +25,18 @@ import co.il.androidapp.ChoresFragment;
 import co.il.androidapp.EventDetailsFragment;
 import co.il.androidapp.ParticipantsFragment;
 import co.il.androidapp.R;
-import co.il.androidapp.ShoppingListFragment;
 import co.il.androidapp.dialog.DialogEventMainAc;
 import co.il.androidapp.model.Chore;
 import co.il.androidapp.model.ChoreModel;
 import co.il.androidapp.model.Event;
+import co.il.androidapp.model.Product;
+import co.il.androidapp.model.ProductModel;
 
 
 public class EventMainActivity extends AppCompatActivity implements DialogEventMainAc.onSaveInterface{
 
     private EventDetailsFragment fra1;
-    private ShoppingListFragment fra2;
+    private ProductFragment fra2;
     private ChoresFragment fra3;
     private ParticipantsFragment fra4;
     int fragmentIndex;
@@ -62,7 +63,7 @@ public class EventMainActivity extends AppCompatActivity implements DialogEventM
 
 
         fra1 = new EventDetailsFragment();
-        fra2 = new ShoppingListFragment();
+        fra2 = new ProductFragment();
         fra3 = new ChoresFragment();
         fra4 = new ParticipantsFragment();
         fragmentIndex=0;
@@ -87,6 +88,7 @@ public class EventMainActivity extends AppCompatActivity implements DialogEventM
                     }
                     case 1: {
                        //setFragment(fra3);
+                        showEditDialog(2);
                         return;
                     }
                     case 2: {
@@ -96,7 +98,7 @@ public class EventMainActivity extends AppCompatActivity implements DialogEventM
                     }
                     case 3: {
                         //setFragment(fra1);
-                        showEditDialog(2);
+
 
                         return;
                     }
@@ -176,10 +178,14 @@ private void showEditDialog(int flag){
 
     FragmentManager fm =getSupportFragmentManager();
     DialogEventMainAc dialogEventMainAc = DialogEventMainAc.newInstance(flag,this);
-    if (flag==1)
-        dialogEventMainAc.show(fm,"pop_fragment_chore");
-    else
-        dialogEventMainAc.show(fm,"pop_fragment_product");
+    if (flag==1) {
+        dialogEventMainAc.show(fm, "pop_fragment_chore");
+        dialogEventMainAc.setTag("Chore");
+    }
+    else {
+        dialogEventMainAc.show(fm, "pop_fragment_product");
+        dialogEventMainAc.setTag("Product");
+    }
 
 
 }
@@ -193,11 +199,14 @@ private void showEditDialog(int flag){
 
     @Override
     public void onSave(String tag, String name, String details) {
+
         switch(tag) {
 
             case "Chore":
                 ChoreModel.instance.addChore(new Chore(name, details));
                 return;
+            case "Product":
+                ProductModel.instance.addProduct(new Product(name,details));
         }
 
     }
